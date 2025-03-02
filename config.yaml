@@ -5,6 +5,7 @@ story:
   max_words: 400
 
 video:
+  language: "English"
   subtitle_position: 40
 
   font_path: "res/fonts/AndikaNewBasic-R.ttf"
@@ -18,7 +19,7 @@ video:
   bgm: "" # A path to mp3 file, which is the background music of the video
 
 llm:
-  temperature: 1.0 # temperature parameter of the g4f
+  temperature: 1.1 # temperature parameter of the g4f
 
 telegram:
   bot_token: ""
