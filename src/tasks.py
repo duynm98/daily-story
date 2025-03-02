@@ -31,6 +31,8 @@ def init_task() -> str:
 def execute_task(task_id: str, delete_on_complete: bool = False):
     for attemp in range(_max_retries):
         try:
+            logger.info(f"Executing task {task_id}. Attemp {attemp}")
+
             output_folder = os.path.join(_output_folder, task_id)
 
             # Fetch a random story
