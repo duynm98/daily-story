@@ -5,12 +5,13 @@ from typing import List
 import g4f
 from loguru import logger
 
-from src import config
+from app import config
 
 _max_retries = 3
 
-temperature = config["llm"].get("temperature", 1.0)
-max_story_words = config["story"].get("max_words", 200)
+_temperature = config["llm"].get("temperature", 1.0)
+_max_story_words = config["story"].get("max_words", 200)
+_language = config["video"].get("language", "English")
 
 
 def _generate_response(prompt: str) -> str:
@@ -26,7 +27,7 @@ def _generate_response(prompt: str) -> str:
             content = g4f.ChatCompletion.create(
                 model="gpt-4o",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=temperature,
+                temperature=_temperature,
             )
 
             logger.success(f"Successfully generate response from llm")
@@ -172,7 +173,7 @@ Please note that you must use English for generating video search terms; Chinese
     return search_terms
 
 
-def generate_story_from_moral(moral: str, example: str) -> str:
+def generate_story_from_moral(moral: str, example: str = "") -> str:
     prompt = f"""
 # Role: Short Story Generator
 
@@ -188,15 +189,15 @@ Generate a short story that show the provided moral.
 6. only return the raw content of the story.
 7. do not include "voiceover", "narrator" or similar indicators of what should be spoken at the beginning of each paragraph or line.
 8. you must not mention the prompt, or anything about the script itself. also, never talk about the amount of paragraphs or lines. just write the story.
-9. respond must in Vietnamese.
-10. the story must consist at most {max_story_words} words
+9. respond must in {_language}.
+10. the story must consist at most {_max_story_words} words
 
 ## Moral:
 {moral}
-
-## Output Example:
-{example}
 """
+
+    if example:
+        prompt += f"\n## Output Example:\n{example}"
 
     def format_response(response):
         # Clean the script

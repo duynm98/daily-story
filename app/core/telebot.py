@@ -3,7 +3,7 @@ import os
 import telepot
 from loguru import logger
 
-from src import config
+from app import config
 
 _tele_bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 if not _tele_bot_token:

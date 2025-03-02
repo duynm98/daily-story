@@ -6,14 +6,14 @@ import random
 
 from loguru import logger
 
-from src import config
-from src.story import fetch_random_vi_story, fetch_short_story, fetch_all_available_morals, fetch_all_stories
-from src.images import get_images, image2video
-from src.voice import create_voice_and_subtitle
-from src.video import generate_video, combine_videos
-from src.llm import generate_terms, translate_to_vietnamese, generate_story_from_moral
-from src.models.schema import VideoParams
-from src import telebot
+from app import config
+from app.core.story import fetch_random_vi_story, fetch_short_story, fetch_all_available_morals, fetch_all_stories
+from app.core.images import get_images, image2video
+from app.core.voice import create_voice_and_subtitle
+from app.core.video import generate_video, combine_videos
+from app.core.llm import generate_terms, translate_to_vietnamese, generate_story_from_moral
+from app.core.models.schema import VideoParams
+from app.core import telebot
 
 _max_retries = 3
 

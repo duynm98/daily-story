@@ -8,7 +8,7 @@ from uuid import uuid4
 import urllib3
 from loguru import logger
 
-from src.models import const
+from app.core.models import const
 
 urllib3.disable_warnings()
 

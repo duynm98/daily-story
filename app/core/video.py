@@ -18,10 +18,10 @@ from moviepy import (
 from moviepy.video.tools.subtitles import SubtitlesClip
 from PIL import ImageFont
 
-from src import config
-from src.models import const
-from src.models.schema import MaterialInfo, VideoAspect, VideoConcatMode, VideoParams
-from src import utils
+from app import config
+from app.core.models import const
+from app.core.models.schema import MaterialInfo, VideoAspect, VideoConcatMode, VideoParams
+from app.core import utils
 
 
 def get_bgm_file(bgm_file: str = ""):

@@ -11,7 +11,7 @@ from edge_tts.submaker import mktimestamp
 from loguru import logger
 from moviepy.video.tools import subtitles
 
-from src import utils
+from app.core import utils
 
 
 def get_all_azure_voices(filter_locals=None) -> list[str]:
@@ -1300,7 +1300,7 @@ def create_voice_and_subtitle(voice_name: str, text: str, voice_output_file: str
 
 if __name__ == "__main__":
 
-    from src.story import fetch_short_story
+    from app.core.story import fetch_short_story
 
     # story = fetch_short_story()
 
