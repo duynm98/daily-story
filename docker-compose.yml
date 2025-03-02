@@ -1,0 +1,12 @@
+
+services:
+  story-short-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "story-short-generator"
+    ports:
+      - "8501:8501"
+    command: [ "bash", "scripts/run.sh" ]
+    volumes: 
+      - ./:/daily-story-short-generator

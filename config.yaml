@@ -1,0 +1,25 @@
+app:
+  output_folder: "./output"
+
+story:
+  max_words: 400
+
+video:
+  subtitle_position: 40
+
+  font_path: "res/fonts/AndikaNewBasic-R.ttf"
+  font_size: 60
+  font_color: "#FFFFFF"
+  stroke_color: "#000000"
+  stroke_width: 4
+
+  voice_rate: 1.075
+
+  bgm: "" # A path to mp3 file, which is the background music of the video
+
+llm:
+  temperature: 1.0 # temperature parameter of the g4f
+
+telegram:
+  bot_token: ""
+  chat_id: ""
