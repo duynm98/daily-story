@@ -1,13 +1,27 @@
-# How to run
+# Daily Story
 
-1.  Find an Pexel API key [here](https://www.pexels.com/).
-2.  Create an `.env` file and put the API key to the `PEXELS_API_KEY` variable:
-    ```
+## How to Run
+
+1. Obtain a Pexels API key from [here](https://www.pexels.com/).
+2. Create a `.env` file and add the API key under the `PEXELS_API_KEY` variable:
+    ```bash
     PEXELS_API_KEY=<your_api_key>
     ```
-3.  Modify the `config.yaml` file
-4.  Run
+3. Modify the `config.yaml` file as needed.
+4. Run the application with:
+    ```bash
+    docker compose up
     ```
-    bash scripts/run.sh
-    ```
-    There will be a short video that tells a short story saved in your `output_folder` that you specified on `config.yaml`. Default is `./output`.
+    - Access the **Web App** at [`http://localhost:8501/`](http://localhost:8501/).
+    - Access the **API Documentation** at [`http://localhost:8000/docs`](http://localhost:8000/docs).
+    - The generated short videos will be saved in the `output_folder` specified in `config.yaml`. The default location is `./output`.
+
+## Screenshots
+
+### APIs
+
+![](res/images/apis.png)
+
+### Web App
+
+![](res/images/webui.png)

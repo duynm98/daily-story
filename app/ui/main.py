@@ -11,9 +11,9 @@ from app import config, load_config
 
 def main():
     global config
-    
+
     st.set_page_config(layout="wide")  # Set the app to full width
-    st.title("Moral Video Generator")
+    st.title("Short Story Video Generator")
 
     # Load the current configuration
 
@@ -21,7 +21,7 @@ def main():
     col1, col2 = st.columns([0.382, 0.618])
 
     with col1:
-        st.subheader("App Configuration")
+        st.subheader("Configuration")
         # config["app"]["output_folder"] = st.text_input("Output Folder", config["app"]["output_folder"])
         config["story"]["max_words"] = st.number_input("Max Words", value=config["story"]["max_words"], min_value=1)
         config["video"]["language"] = st.selectbox(
@@ -44,12 +44,12 @@ def main():
 
         if st.button("Save Configuration", use_container_width=True):
             save_config(config)
-            st.success("Configuration saved successfully!")
+            st.success("Configuration saved successfully! Rerun the project for the config to take effect.")
 
     with col2:
-        st.subheader("Generate Moral Video")
+        st.subheader("Generate Video")
         # Input field for the user to enter a moral
-        moral_text = st.text_area("Enter a moral lesson:").strip()
+        moral_text = st.text_area("Enter a moral lesson:", placeholder="E.g., Honesty is the best policy.", max_chars=250).strip()
 
         button_col = st.columns(1)[0]
 

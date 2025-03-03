@@ -139,7 +139,6 @@ docs/_build/
 # Windows
 Thumbs.db
 
-res/images
 res/songs
 res/archive
 res/aws
