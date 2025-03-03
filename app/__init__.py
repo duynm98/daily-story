@@ -14,23 +14,30 @@ logger.add(
 logger.level("INFO", color="<blue>")
 logger.level("DEBUG", color="<magenta>")
 
-# logger.info("info")
-# logger.debug("debug")
-# logger.error("error")
-# logger.warning("warning")
-# logger.critical("critical")
-
 logger.info("Loading environment variables...")
 load_dotenv()
 
+CONFIG_FILE = "config.yaml"
 
-def load_config(config_file: str = "config.yaml"):
-    if not os.path.exists(config_file):
-        logger.error(f"Config file does not exists: {config_file}")
+
+def load_config():
+    if not os.path.exists(CONFIG_FILE):
+        logger.error(f"Config file does not exists: {CONFIG_FILE}")
         return None
 
-    with open(config_file) as f:
-        return yaml.safe_load(f)
+    with open(CONFIG_FILE) as f:
+        config = yaml.safe_load(f)
+        logger.success(f"Succesfully loaded config from {CONFIG_FILE}")
+        logger.info(f"Config:\n{config}")
+        return config
+
+
+def save_config(new_config: dict):
+    with open(CONFIG_FILE, "w") as file:
+        yaml.dump(new_config, file, default_flow_style=False, allow_unicode=True)
+
+    global config
+    config = load_config()
 
 
 config = load_config()

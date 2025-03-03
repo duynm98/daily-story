@@ -16,13 +16,18 @@ from app.core.models.schema import VideoParams
 
 _max_retries = 3
 
+
 _voice_rate = config["video"].get("voice_rate", 1.0)
+_language = config["video"].get("language", "English").lower().strip()
 
 
 def generate_video_from_moral(moral: str, task_id: str) -> str:
     if not moral:
         logger.error("moral cannot be empty")
         return ""
+
+    if _language == "vietnamese":
+        moral = translate_to_vietnamese(moral)
 
     story = {"moral": moral, "story": generate_story_from_moral(moral)}
     if not story["story"]:
@@ -51,8 +56,9 @@ def generate_video_from_moral(moral: str, task_id: str) -> str:
             assert len(images) > 0, "No images found"
 
             audio_path = os.path.join(output_folder, "audio.mp3")
+            voice_name = "en-US-AndrewNeural-Male" if _language == "english" else "vi-VN-NamMinhNeural"
             subtitle_output_file, audio_duration = create_voice_and_subtitle(
-                voice_name="en-US-AndrewNeural-Male",
+                voice_name=voice_name,
                 text=story["moral"] + "\n" + story["story"],
                 voice_output_file=audio_path,
                 voice_rate=_voice_rate,
@@ -73,7 +79,11 @@ def generate_video_from_moral(moral: str, task_id: str) -> str:
 
             final_video_path = os.path.join(output_folder, "video-final.mp4")
             generate_video(
-                video_path=video_path, audio_path=audio_path, subtitle_path=subtitle_output_file, output_file=final_video_path, params=VideoParams()
+                video_path=video_path,
+                audio_path=audio_path,
+                subtitle_path=subtitle_output_file,
+                output_file=final_video_path,
+                params=VideoParams(),
             )
 
             logger.success(f"Task {task_id} completed!")

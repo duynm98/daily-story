@@ -17,6 +17,7 @@ from app.core import telebot
 
 _max_retries = 3
 
+
 _output_folder = config["app"].get("output_folder", "./output")
 _voice_rate = config["video"].get("voice_rate", 1.0)
 

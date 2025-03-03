@@ -4,10 +4,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: "api"
+    ports:
+      - "8000:8000"
+    command: "uvicorn app.apis.main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes: 
+      - ./:/daily-story-short-generator
+    restart: always
+  ui:
+    build:
+      context: .
     ports:
       - "8501:8501"
-    command: "uvicorn app.apis.main:app --host 0.0.0.0 --port 8501 --reload"
+    command: "streamlit run app/ui/main.py"
     volumes: 
       - ./:/daily-story-short-generator
     restart: always

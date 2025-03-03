@@ -24,6 +24,7 @@ from app.core.models.schema import MaterialInfo, VideoAspect, VideoConcatMode, V
 from app.core import utils
 
 
+
 def get_bgm_file(bgm_file: str = ""):
     if bgm_file and os.path.exists(bgm_file):
         return bgm_file

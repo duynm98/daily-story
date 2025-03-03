@@ -17,4 +17,4 @@ def load_config(config_file: str = "config.yaml"):
         return yaml.safe_load(f)
 
 
-config = load_config()
+

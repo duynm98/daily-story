@@ -5,6 +5,8 @@ from loguru import logger
 
 from app import config
 
+
+
 _tele_bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 if not _tele_bot_token:
     _tele_bot_token = config["telegram"].get("bot_token", "")

@@ -7,6 +7,8 @@ from pydantic import BaseModel
 
 from app import config
 
+
+
 warnings.filterwarnings(
     "ignore",
     category=UserWarning,

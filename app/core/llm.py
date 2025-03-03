@@ -9,6 +9,7 @@ from app import config
 
 _max_retries = 3
 
+
 _temperature = config["llm"].get("temperature", 1.0)
 _max_story_words = config["story"].get("max_words", 200)
 _language = config["video"].get("language", "English")
