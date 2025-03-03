@@ -1,12 +1,13 @@
 
 services:
-  story-short-generator:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: "story-short-generator"
+    container_name: "api"
     ports:
       - "8501:8501"
-    command: [ "bash", "scripts/run.sh" ]
+    command: "uvicorn app.apis.main:app --host 0.0.0.0 --port 8501 --reload"
     volumes: 
       - ./:/daily-story-short-generator
+    restart: always
