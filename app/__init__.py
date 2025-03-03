@@ -9,7 +9,7 @@ logger.remove()
 logger.add(
     sys.stderr,
     colorize=True,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss.SS}</green> | <level>{level: <8}</level> | <black>{name}:{line}</black> - <level>{message}</level>",
+    format="<green>{time:YYYY-MM-DD HH:mm:ss.SS}</green> | <level>{level: <8}</level> | <cyan>{name}:{line}</cyan> - <level>{message}</level>",
 )
 logger.level("INFO", color="<blue>")
 logger.level("DEBUG", color="<magenta>")
