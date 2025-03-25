@@ -20,8 +20,8 @@
 
 ### APIs
 
-![](res/images/apis.png)
+![](assets/images/apis.png)
 
 ### Web App
 
-![](res/images/webui.png)
+![](assets/images/webui.png)

@@ -10,7 +10,7 @@ telegram:
 video:
   bgm: ''
   font_color: '#ffffff'
-  font_path: res/fonts/AndikaNewBasic-R.ttf
+  font_path: assets/fonts/AndikaNewBasic-R.ttf
   font_size: 60
   language: Vietnamese
   stroke_color: '#000000'

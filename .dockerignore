@@ -1,15 +1,15 @@
-res/images
-res/songs
-res/aws
+assets/images
+assets/songs
+assets/aws
 temp/
 output/
 *.db
-res/fonts/*.ttc
-res/fonts/*.zip
-res/fonts/andika-basic
-res/fonts/AndikaNewBasic-BI.ttf
-res/fonts/AndikaNewBasic-I.ttf
-res/fonts/UTM Kabel KT.ttf
+assets/fonts/*.ttc
+assets/fonts/*.zip
+assets/fonts/andika-basic
+assets/fonts/AndikaNewBasic-BI.ttf
+assets/fonts/AndikaNewBasic-I.ttf
+assets/fonts/UTM Kabel KT.ttf
 db
 har_and_cookies/
 *.zip

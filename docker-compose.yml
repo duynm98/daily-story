@@ -10,6 +10,7 @@ services:
     volumes: 
       - ./:/daily-story-short-generator
     restart: always
+
   ui:
     build:
       context: .
@@ -19,3 +20,24 @@ services:
     volumes: 
       - ./:/daily-story-short-generator
     restart: always
+
+  redis:
+    image: "redis"
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    depends_on:
+      - api
+      - ui
+
+  celery:
+    container_name: celery
+    build: .
+    command: celery -A app.workers.celery_worker.app worker -B --loglevel=info --concurrency=4
+    volumes:
+      - .:/daily-story-short-generator
+    depends_on:
+      - api
+      - ui
+      - redis

@@ -146,4 +146,4 @@ if __name__ == "__main__":
     # images = get_images("Why did the designer break up with their font?", "./temp")
     # print("Downloaded files:", images)
 
-    image2video("/Users/duynm/duynm/me/playground/daily-space-news/res/images/Space matters.jpeg", "test.mp4", duration=5)
+    image2video("/Users/duynm/duynm/me/playground/daily-space-news/assets/images/Space matters.jpeg", "test.mp4", duration=5)

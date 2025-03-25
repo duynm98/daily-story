@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 
-from app.apis.routers import tasks
+from app.apis.routers import story
 
 app = FastAPI()
 
-app.include_router(tasks.router)
+app.include_router(story.router)
 
 @app.get("/", tags=["Root"])
 async def root():
