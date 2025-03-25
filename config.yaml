@@ -1,9 +1,9 @@
 app:
   output_folder: ./output
 llm:
-  temperature: 1.1
+  temperature: 1.2
 story:
-  max_words: 200
+  max_words: 400
 telegram:
   bot_token: ''
   chat_id: ''
@@ -12,7 +12,7 @@ video:
   font_color: '#ffffff'
   font_path: res/fonts/AndikaNewBasic-R.ttf
   font_size: 60
-  language: English
+  language: Vietnamese
   stroke_color: '#000000'
   stroke_width: 4
   subtitle_position: 41

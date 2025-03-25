@@ -14,6 +14,7 @@ from app.core.video import generate_video, combine_videos
 from app.core.llm import generate_terms, translate_to_vietnamese, generate_story_from_moral
 from app.core.models.schema import VideoParams
 from app.core import telebot
+from app.core.generator import generate_video_from_moral
 
 _max_retries = 3
 
@@ -103,6 +104,30 @@ def execute_task(task_id: str, delete_on_complete: bool = False):
     logger.error(f"Failed to execute task {task_id}.")
 
 
+def execute_task_v2(task_id: str, delete_on_complete: bool = False):
+    for attemp in range(_max_retries):
+        try:
+            logger.info(f"Executing task {task_id}. Attemp {attemp}")
+
+            # Fetch a random story
+            en2vi_morals = fetch_all_available_morals()
+            stories = fetch_all_stories()
+            story = random.choice([s for s in stories if s["moral"] in en2vi_morals])
+
+            story["story"] = generate_story_from_moral(story["moral"], story["story"])
+            story["moral"] = en2vi_morals[story["moral"]]
+
+            generate_video_from_moral(story["moral"], task_id)
+            return
+
+        except Exception as e:
+            logger.error(f"Something wrong when execute task {task_id}. Trying again")
+            continue
+
+    logger.error(f"Failed to execute task {task_id}.")
+
+
 if __name__ == "__main__":
     task_id = init_task()
-    execute_task(task_id, delete_on_complete=False)
+    execute_task_v2(task_id, delete_on_complete=False)
+    

@@ -124,7 +124,7 @@ Generate {amount} search terms for searching images to tell the provided story.
 
 ## Constrains:
 1. Return search terms as a JSON array of strings.
-2. The first term must be the story's main character. Each additional term (1-3 words) must include the main character, other characters, or the scene.
+2. The first term must be the story's main character. Each additional term (1-3 words) must include other characters or the place where the story happens.
 3. Only return the JSON array—nothing else, not the script.
 4. Search terms must closely relate to the story's characters or scene.
 5. Use English search terms only.
@@ -183,15 +183,14 @@ Generate a short story that show the provided moral.
 
 ## Constrains:
 1. the story is to be returned as a plain text.
-2. the story must have unexpected plots
+2. the story must have unexpected plots. The characters have to be animals.
 3. do not under any circumstance reference this prompt in your response.
 4. get straight to the point, don't start with unnecessary things like, "here is a story...".
 5. you must not include any type of markdown or formatting in the story, never use a title.
 6. only return the raw content of the story.
-7. do not include "voiceover", "narrator" or similar indicators of what should be spoken at the beginning of each paragraph or line.
-8. you must not mention the prompt, or anything about the script itself. also, never talk about the amount of paragraphs or lines. just write the story.
-9. respond must in {_language}.
-10. the story must consist at most {_max_story_words} words
+7. you must not mention the prompt
+8. respond must in {_language}.
+9. the story must consist at most {_max_story_words} words
 
 ## Moral:
 {moral}
@@ -293,10 +292,76 @@ Translate the provided paragraph to Vietnamese.
 
 
 if __name__ == "__main__":
-    joke = _generate_response(
+    response = _generate_response(
         """
-Generate a random dad joke. Explain why the joke is funny. Avoid the following jokes:
-- Why did the scarecrow win an award?
+I need pictures for my bedtime story. Give me a list of prompt to generate such images for my story. The story:
+```
+### **The Brave Little Monkey and the Hidden Treasure**  
+
+**[Opening Scene: Jungle at Sunset]**  
+The sun was setting over the vast jungle, painting the sky in shades of orange and pink. Deep in the heart of the jungle lived a small but courageous monkey named Milo. Unlike the other monkeys who spent their days swinging from tree to tree, Milo dreamed of adventure.  
+
+One evening, as he sat by the river, an old tortoise named Taro approached him.  
+*"Milo,"* Taro said in a hushed voice, *"have you ever heard of the Hidden Treasure of the Golden Banana?"*  
+
+Milo’s eyes widened. *"Golden Banana? What’s that?"*  
+
+Taro smiled. *"Long ago, a legendary golden banana was hidden deep inside the Dark Cavern. But it is guarded by the Shadow Panther, and no one has ever been brave enough to retrieve it."*  
+
+Milo's heart pounded with excitement. This was the adventure he had been waiting for!  
+
+---  
+
+### **The Journey Begins**  
+
+Early the next morning, Milo packed a small bag of bananas, took a deep breath, and set off toward the Dark Cavern. As he traveled through the dense jungle, he faced many obstacles.  
+
+First, he had to cross the **Whispering River**, where sneaky crocodiles lurked beneath the water. Carefully, he used hanging vines to swing across, just barely escaping a snapping jaw!  
+
+Then, he entered the **Twisting Trees**, a maze-like forest filled with moving branches. Thinking fast, he followed the path of fireflies, who lit the way through the darkness.  
+
+Finally, he reached the **Dark Cavern**, an enormous cave with eerie glowing eyes staring from the shadows.  
+
+---  
+
+### **Facing the Shadow Panther**  
+
+Milo stepped inside cautiously. Suddenly, a deep growl echoed through the cavern. The **Shadow Panther** emerged, its glowing yellow eyes locked onto Milo.  
+
+*"Who dares enter my cave?"* the Panther snarled.  
+
+Milo gulped but stood his ground. *"I am Milo, and I have come to find the Golden Banana!"*  
+
+The Panther chuckled. *"To claim the treasure, you must pass the **Test of Courage**. If you fail, you must leave forever."*  
+
+Milo nodded bravely. *"I accept the challenge!"*  
+
+---  
+
+### **The Test of Courage**  
+
+The cave suddenly filled with **darkness**. Milo couldn't see a thing. A voice whispered, *"Find the treasure, but do not be afraid."*  
+
+Milo took a deep breath. Instead of panicking, he focused on his other senses—his **ears** picked up the sound of the wind, and his **hands** felt along the cave walls. He walked slowly until he felt something **smooth and round**.  
+
+Light filled the cavern as Milo lifted the **Golden Banana** into the air! The Shadow Panther grinned.  
+
+*"You have proven your bravery, little monkey. The treasure is yours."*  
+
+---  
+
+### **The Hero Returns**  
+
+Milo raced back to the jungle, where the animals gathered to cheer for him. Taro the Tortoise smiled proudly. *"You did it, Milo! You showed us all that true bravery comes from within."*  
+
+From that day on, Milo was no longer just a small monkey—he was **Milo the Brave**, the hero of the jungle!  
+
+**THE END.**  
+
+---
+### **Goodnight, Little Adventurer!**  
+Now close your eyes and dream of your own adventure. Who knows? Maybe one day, you'll find your own Golden Banana! 🌙✨
+```
 """
     )
-    print(joke)
+    print(response)
