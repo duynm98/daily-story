@@ -100,3 +100,4 @@ wcwidth==0.2.13
 yarl==1.18.3
 celery
 redis
+curl_cffi

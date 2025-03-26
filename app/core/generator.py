@@ -2,7 +2,6 @@ import os
 import glob
 import shutil
 from uuid import uuid4
-import datetime
 
 from loguru import logger
 
@@ -21,8 +20,7 @@ _voice_rate = config["video"].get("voice_rate", 1.0)
 _language = config["video"].get("language", "English").lower().strip()
 
 
-def generate_video_from_moral(moral: str) -> str:
-    task_id = datetime.now().strftime("%Y_%m_%d_%H_%M")
+def generate_video_from_moral(moral: str, task_id: str) -> str:
     if not moral:
         logger.error("moral cannot be empty")
         return ""

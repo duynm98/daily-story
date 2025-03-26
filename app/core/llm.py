@@ -1,6 +1,7 @@
 import json
 import re
 from typing import List
+import traceback
 
 import g4f
 from loguru import logger
@@ -149,6 +150,10 @@ Please note that you must use English for generating video search terms; Chinese
             if "Error: " in response:
                 logger.error(f"failed to generate video script: {response}")
                 return []
+            if not response:
+                logger.warning(f"Unexpected response: {response}")
+                return []
+                
             search_terms = json.loads(response)
             if not isinstance(search_terms, list) or not all(isinstance(term, str) for term in search_terms):
                 logger.error("response is not a list of strings.")
@@ -163,7 +168,7 @@ Please note that you must use English for generating video search terms; Chinese
                         search_terms = json.loads(match.group())
                     except Exception as e:
                         logger.warning(f"failed to generate video terms: {str(e)}")
-                        pass
+            logger.warning(traceback.format_exc())
 
         if search_terms and len(search_terms) > 0:
             break

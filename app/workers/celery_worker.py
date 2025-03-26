@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from celery import Celery, Task
 
-from app.workers.celery_tasks import GenerateStory, GenerateVideo
+# from app.workers.celery_tasks import GenerateStory, GenerateVideo
 from app.core.generator import generate_video_from_moral
 from app.core.llm import generate_story_from_moral
 
@@ -29,11 +29,11 @@ app.conf.update(
 app.autodiscover_tasks()
 
 
-@app.task(name="generate-story", base=GenerateStory, bind=True)
+@app.task(name="generate-story", bind=True)
 def generate_story(self, moral: str):
     return generate_story_from_moral(moral)
 
 
-@app.task(name="generate-video", base=GenerateVideo, bind=True)
-def generate_video(self, moral: str):
-    return generate_video_from_moral(moral)
+@app.task(name="generate-video", bind=True)
+def generate_video(self, moral: str, task_id: str):
+    return generate_video_from_moral(moral, task_id)

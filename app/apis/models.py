@@ -8,3 +8,18 @@ class TextRequest(BaseModel):
 class StoryResponse(BaseModel):
     moral: str
     story: str
+
+
+class TaskResponse(BaseModel):
+    task_id: str
+    message: str
+
+
+class TaskStatusResponse(BaseModel):
+    task_id: str
+    status: str
+    result: str | None
+
+
+class AllTasksResponse(BaseModel):
+    tasks: list[TaskStatusResponse]
